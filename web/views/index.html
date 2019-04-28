@@ -1,0 +1,78 @@
+{% func Index(log string) %}
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Translator</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            {%= Materialize() %}   
+            {%= Style() %}              
+        </style>
+        <script>
+            {%= Jquery() %}        
+            {%= MaterializeJS() %}   
+            {%= Js() %}        
+        </script>
+    </head>
+    <body>
+        <div class="row">
+            <div class="col s12">
+                <div class="card indigo lighten-4">
+                <div class="card-content">
+                    <div class="row">
+                        <form action="/" method="POST">
+                            <div class="col s12">
+                                    <div class="input-field col s12">
+                                        <select name="kan">
+                                            <option value="" disabled selected>Choose your option</option>
+                                            <option value="0">Indonesia - English</option>
+                                            <option value="1">English - Indonesia</option>
+                                        </select>
+                                        <label class="indigo-text">Language</label>
+                                    </div>
+                                    <textarea class="id" name="id" cols="50" rows="50"></textarea>        
+                                </div>
+                                <input type="submit" name="submit" value="Terjemahkan">                
+                        </form>
+                    </div>
+                Created @2018-2019
+                by iqbal & Hafid
+                </div>
+                </div>
+            </div>
+            </div>
+        <div>
+        {%= Log(log)%}
+    </body>
+    </html>
+{% endfunc %}
+<div> Inggris </div>
+<textarea class="en" name="en" cols="30" rows="10"></textarea>        
+
+{% func Log(log string) %}
+    <div>{%s log %}</div>
+{% endfunc %}
+
+{% func Js() %}
+$(document).ready(function(){
+    $('select').formSelect();
+  });
+
+$.post( "ajax/test.html", function( data ) {
+    $( ".result" ).html( data );
+});
+
+{% endfunc %}
+
+{% func Style() %}
+    textarea {
+        height: 15rem;
+    }
+select {
+    height: 0;
+    padding:0;
+    margin:0;
+}
+{% endfunc %}
